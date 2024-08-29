@@ -41,6 +41,16 @@ def update_book(id):
     else:
         return jsonify({"message": "Book not found"}), 404
 
+@app.route("/test/<id>", methods=["PUT"])
+def update_book(id):
+    data = request.get_json()
+    books = mongo.db.books
+    result = books.update_one({"_id": ObjectId(id)}, {"$set": data})
+    if result.modified_count > 0:
+        return jsonify({"message": "Book updated successfully"})
+    else:
+        return jsonify({"message": "Book not found"}), 404
+
 @app.route("/books/<id>", methods=["DELETE"]) 
 def delete_book(id):
     books = mongo.db.books
