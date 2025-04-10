@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
 from bson import ObjectId
-#46
+#47
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/your_database_name"
 mongo = PyMongo(app)
